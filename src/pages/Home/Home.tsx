@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './Home.module.scss';
 
 //Components
-import { Container } from '../components/Container/Container';
+import { Container } from '../../components/Container/Container';
 
 const Home = () => {
 	return (
