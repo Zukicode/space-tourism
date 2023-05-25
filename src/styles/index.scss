@@ -14,6 +14,7 @@
 body {
 	font-family: var(--font-bellefair);
 	background: var(--dark);
+	overflow-x: hidden;
 }
 
 button,
@@ -21,4 +22,19 @@ input,
 span,
 div {
 	font-family: var(--font-bellefair);
+}
+
+/*SCROLL BAR*/
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #ffffff;
+	border-radius: 8px;
 }

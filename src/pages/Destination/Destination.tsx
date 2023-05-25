@@ -32,7 +32,7 @@ const Destination = () => {
 						</ul>
 
 						<h1 className={styles.title}>MOON</h1>
-						<p>
+						<p className={styles.description}>
 							See our planet as you’ve never seen it before. A perfect relaxing
 							trip away to help regain perspective and come back refreshed.
 							While you’re there, take in some history by visiting the Luna 2
@@ -46,7 +46,7 @@ const Destination = () => {
 							</div>
 							<div className={styles.info}>
 								<span>EST. TRAVEL TIME</span>
-								<span>3 DAYS</span>
+								<h1>3 DAYS</h1>
 							</div>
 						</div>
 					</div>
