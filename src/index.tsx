@@ -15,7 +15,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 	<React.StrictMode>
-		<BrowserRouter>
+		<BrowserRouter basename='space-tourism/'>
 			<App />
 		</BrowserRouter>
 	</React.StrictMode>
