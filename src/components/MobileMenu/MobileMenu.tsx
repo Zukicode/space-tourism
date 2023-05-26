@@ -2,6 +2,13 @@ import React from 'react';
 
 //Styles
 import styles from './MobileMenu.module.scss';
+import {
+	CREW_ROUTE,
+	DESTINATION_ROUTE,
+	HOME_ROUTE,
+	TECHNOLOGY_ROUTE,
+} from 'routes/routes';
+import { useNavigate } from 'react-router-dom';
 
 interface MobileMenuProps {
 	showMobile: boolean;
@@ -9,6 +16,7 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu = ({ showMobile, toggleMenu }: MobileMenuProps) => {
+	const navigate = useNavigate();
 	const closeMenu = () => toggleMenu();
 
 	return (
@@ -23,21 +31,21 @@ export const MobileMenu = ({ showMobile, toggleMenu }: MobileMenuProps) => {
 
 			<div className={styles.nav}>
 				<ul>
-					<li>
+					<li onClick={() => navigate(HOME_ROUTE)}>
 						<span>00</span>
-						<a href=''>HOME</a>
+						<a>HOME</a>
 					</li>
-					<li>
+					<li onClick={() => navigate(DESTINATION_ROUTE)}>
 						<span>01</span>
-						<a href=''>DESTINATION</a>
+						<a>DESTINATION</a>
 					</li>
-					<li>
+					<li onClick={() => navigate(CREW_ROUTE)}>
 						<span>02</span>
-						<a href=''>CREW</a>
+						<a>CREW</a>
 					</li>
-					<li>
+					<li onClick={() => navigate(TECHNOLOGY_ROUTE)}>
 						<span>03</span>
-						<a href=''>TECHNOLOGY</a>
+						<a>TECHNOLOGY</a>
 					</li>
 				</ul>
 			</div>

@@ -33,7 +33,7 @@ export const Header = () => {
 	return (
 		<>
 			<div className={styles.header}>
-				<div className={styles.logo}></div>
+				<div onClick={() => navigate(HOME_ROUTE)} className={styles.logo}></div>
 
 				<div className={styles.line}></div>
 
