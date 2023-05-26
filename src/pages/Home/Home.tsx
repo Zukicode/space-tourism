@@ -6,7 +6,12 @@ import styles from './Home.module.scss';
 //Components
 import { Container } from '../../components/Container/Container';
 
+import { useNavigate } from 'react-router-dom';
+import { DESTINATION_ROUTE } from 'routes/routes';
+
 const Home = () => {
+	const navigate = useNavigate();
+
 	return (
 		<div className={styles.home}>
 			<Container>
@@ -23,7 +28,7 @@ const Home = () => {
 
 				<div className={styles.button}>
 					<div className={styles.buttonEffect}>
-						<button>EXPLORE</button>
+						<button onClick={() => navigate(DESTINATION_ROUTE)}>EXPLORE</button>
 					</div>
 				</div>
 			</Container>
