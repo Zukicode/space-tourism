@@ -8,15 +8,15 @@ import './styles/index.scss';
 import { App } from './components/App/App';
 
 //Router
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 );
 root.render(
 	<React.StrictMode>
-		<BrowserRouter basename='space-tourism/'>
+		<HashRouter>
 			<App />
-		</BrowserRouter>
+		</HashRouter>
 	</React.StrictMode>
 );
