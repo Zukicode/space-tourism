@@ -7,7 +7,6 @@ import styles from './Header.module.scss';
 import { MobileMenu } from 'components/MobileMenu/MobileMenu';
 
 //Route
-import { Link } from 'react-router-dom';
 import {
 	CREW_ROUTE,
 	DESTINATION_ROUTE,

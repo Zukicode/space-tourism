@@ -3,9 +3,6 @@ import React from 'react';
 //Styles
 import styles from './MobileMenu.module.scss';
 
-//Icons
-import closeIcon from 'assets/shared/icon-close.svg';
-
 interface MobileMenuProps {
 	showMobile: boolean;
 	toggleMenu: () => void;
@@ -20,7 +17,7 @@ export const MobileMenu = ({ showMobile, toggleMenu }: MobileMenuProps) => {
 		>
 			<div className={styles.header}>
 				<button onClick={closeMenu}>
-					<img src={closeIcon} alt='close' />
+					<img src='assets/shared/icon-close.svg' alt='close' />
 				</button>
 			</div>
 

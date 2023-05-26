@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 //Styles
 import styles from './Destination.module.scss';
@@ -9,7 +9,43 @@ import { Container } from 'components/Container/Container';
 //Images
 import moonImage from 'assets/destination/image-moon.png';
 
+//Other
+import data from 'data.json';
+
+interface IPlanet {
+	name: string;
+	description: string;
+	distance: string;
+	images: {
+		png: string;
+		webp: string;
+	};
+	travel: string;
+}
+
 const Destination = () => {
+	const [destinationData, setDestinationData] = useState<IPlanet[]>([]);
+	const [activePlanet, setActivePlanet] = useState<IPlanet>();
+	const [selectPlanet, setSelectPlanet] = useState(0);
+	const [animation, setAnimation] = useState(false);
+
+	useEffect(() => {
+		setDestinationData(data.destinations);
+	}, []);
+
+	useEffect(() => {
+		setAnimation(true);
+
+		setActivePlanet(destinationData[selectPlanet]);
+	}, [destinationData, selectPlanet]);
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setAnimation(false);
+		}, 2000);
+		return () => clearTimeout(timer);
+	}, [destinationData, selectPlanet]);
+
 	return (
 		<div className={styles.destination}>
 			<Container>
@@ -18,35 +54,60 @@ const Destination = () => {
 					<h1>PICK YOUR DESTINATION</h1>
 				</div>
 
-				<div className={styles.content}>
+				<div
+					className={
+						animation ? `${styles.content} ${styles.active}` : styles.content
+					}
+				>
 					<div className={styles.image}>
-						<img src={moonImage} alt='moon' />
+						<img src={activePlanet && activePlanet.images.png} alt='planet' />
 					</div>
 
 					<div className={styles.details}>
 						<ul>
-							<li className={styles.active}>MOON</li>
-							<li>MARS</li>
-							<li>EUROPA</li>
-							<li>TITAN</li>
+							<li
+								onClick={() => setSelectPlanet(0)}
+								className={selectPlanet === 0 ? styles.active : ''}
+							>
+								MOON
+							</li>
+							<li
+								onClick={() => setSelectPlanet(1)}
+								className={selectPlanet === 1 ? styles.active : ''}
+							>
+								MARS
+							</li>
+							<li
+								onClick={() => setSelectPlanet(2)}
+								className={selectPlanet === 2 ? styles.active : ''}
+							>
+								EUROPA
+							</li>
+							<li
+								onClick={() => setSelectPlanet(3)}
+								className={selectPlanet === 3 ? styles.active : ''}
+							>
+								TITAN
+							</li>
 						</ul>
 
-						<h1 className={styles.title}>MOON</h1>
+						<h1 className={styles.title}>
+							{activePlanet && activePlanet.name}
+						</h1>
 						<p className={styles.description}>
-							See our planet as you’ve never seen it before. A perfect relaxing
-							trip away to help regain perspective and come back refreshed.
-							While you’re there, take in some history by visiting the Luna 2
-							and Apollo 11 landing sites.
+							{activePlanet && activePlanet.description}
 						</p>
 
 						<div className={styles.distance}>
 							<div className={styles.info}>
 								<span>AVG. DISTANCE</span>
-								<h1>384,400 KM</h1>
+
+								<h1>{activePlanet && activePlanet.distance}</h1>
 							</div>
+
 							<div className={styles.info}>
 								<span>EST. TRAVEL TIME</span>
-								<h1>3 DAYS</h1>
+								<h1>{activePlanet && activePlanet.travel}</h1>
 							</div>
 						</div>
 					</div>

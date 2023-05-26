@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 //Styles
 import styles from './Crew.module.scss';
@@ -6,10 +6,40 @@ import styles from './Crew.module.scss';
 //Components
 import { Container } from 'components/Container/Container';
 
-//Images
-import douglas from 'assets/crew/image-douglas-hurley.png';
+import data from 'data.json';
+
+interface IPerson {
+	name: string;
+	images: {
+		png: string;
+		webp: string;
+	};
+	role: string;
+	bio: string;
+}
 
 const Crew = () => {
+	const [crewData, setCrewData] = useState<IPerson[]>([]);
+	const [activePerson, setActivePerson] = useState<IPerson>();
+	const [selectPerson, setSelectPerson] = useState(0);
+	const [animation, setAnimation] = useState(false);
+
+	useEffect(() => {
+		setCrewData(data.crew);
+	}, []);
+
+	useEffect(() => {
+		setAnimation(true);
+		setActivePerson(crewData[selectPerson]);
+	}, [crewData, selectPerson]);
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setAnimation(false);
+		}, 2000);
+		return () => clearTimeout(timer);
+	}, [crewData, selectPerson]);
+
 	return (
 		<div className={styles.crew}>
 			<Container>
@@ -18,26 +48,42 @@ const Crew = () => {
 					<h1>MEET YOUR CREW</h1>
 				</div>
 
-				<div className={styles.content}>
+				<div
+					className={
+						animation ? `${styles.content} ${styles.active}` : styles.content
+					}
+				>
 					<div className={styles.details}>
-						<p className={styles.pos}>COMMANDER</p>
-						<h1 className={styles.title}>Douglas Hurley</h1>
+						<p className={styles.pos}>{activePerson && activePerson.role}</p>
+						<h1 className={styles.title}>
+							{activePerson && activePerson.name}
+						</h1>
 						<p className={styles.description}>
-							Douglas Gerald Hurley is an American engineer, former Marine Corps
-							pilot and former NASA astronaut. He launched into space for the
-							third time as commander of Crew Dragon Demo-2.
+							{activePerson && activePerson.bio}
 						</p>
 
 						<div className={styles.choose}>
-							<div className={styles.active}></div>
-							<div></div>
-							<div></div>
-							<div></div>
+							<div
+								className={selectPerson === 0 ? styles.active : ''}
+								onClick={() => setSelectPerson(0)}
+							></div>
+							<div
+								className={selectPerson === 1 ? styles.active : ''}
+								onClick={() => setSelectPerson(1)}
+							></div>
+							<div
+								className={selectPerson === 2 ? styles.active : ''}
+								onClick={() => setSelectPerson(2)}
+							></div>
+							<div
+								className={selectPerson === 3 ? styles.active : ''}
+								onClick={() => setSelectPerson(3)}
+							></div>
 						</div>
 					</div>
 
 					<div className={styles.image}>
-						<img src={douglas} alt='moon' />
+						<img src={activePerson && activePerson.images.png} alt='person' />
 					</div>
 				</div>
 			</Container>
