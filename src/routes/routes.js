@@ -1,6 +1,6 @@
-import Home from 'pages/Home/Home';
-import Destination from 'pages/Destination/Destination';
 import Crew from 'pages/Crew/Crew';
+import Destination from 'pages/Destination/Destination';
+import Home from 'pages/Home/Home';
 import Tech from 'pages/Tech/Tech';
 
 export const HOME_ROUTE = '/';

@@ -1,11 +1,10 @@
-import React from 'react';
-
 //Styles
 import styles from './Home.module.scss';
 
 //Components
 import { Container } from '../../components/Container/Container';
 
+//Route
 import { useNavigate } from 'react-router-dom';
 import { DESTINATION_ROUTE } from 'routes/routes';
 

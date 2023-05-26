@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 //Styles
 import styles from './Crew.module.scss';
@@ -6,6 +6,7 @@ import styles from './Crew.module.scss';
 //Components
 import { Container } from 'components/Container/Container';
 
+//Other
 import data from 'data.json';
 
 interface IPerson {

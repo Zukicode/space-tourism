@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 //Styles
 import styles from './Destination.module.scss';
 
 //Components
 import { Container } from 'components/Container/Container';
-
-//Images
-import moonImage from 'assets/destination/image-moon.png';
 
 //Other
 import data from 'data.json';

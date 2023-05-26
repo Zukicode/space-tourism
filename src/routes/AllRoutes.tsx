@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { ListRoutes } from './routes';
 
 export const AllRoutes = () => {

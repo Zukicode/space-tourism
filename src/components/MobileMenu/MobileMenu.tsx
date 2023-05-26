@@ -1,14 +1,12 @@
-import React from 'react';
-
 //Styles
-import styles from './MobileMenu.module.scss';
+import { useNavigate } from 'react-router-dom';
 import {
 	CREW_ROUTE,
 	DESTINATION_ROUTE,
 	HOME_ROUTE,
 	TECHNOLOGY_ROUTE,
 } from 'routes/routes';
-import { useNavigate } from 'react-router-dom';
+import styles from './MobileMenu.module.scss';
 
 interface MobileMenuProps {
 	showMobile: boolean;

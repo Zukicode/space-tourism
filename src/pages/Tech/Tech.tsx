@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 //Styles
 import styles from './Tech.module.scss';
@@ -7,6 +7,7 @@ import styles from './Tech.module.scss';
 import { Container } from 'components/Container/Container';
 
 import data from 'data.json';
+
 import { isMobileDevice } from 'utils/isMobileDevice';
 
 interface ITech {
